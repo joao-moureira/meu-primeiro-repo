@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+</head>
+<body>
+    <label for="ipt_quantidadeProd">informe a quantidade de produtos comprados: </label>
+    <input type="text" id="ipt_quantidadeProd"> <br>
+
+    <label for="ipt_valorTotal"> informe o valor total da compra: </label>
+    <input type="text" id="ipt_valorTotal"> <br>
+
+    <label for="rad_clienteVip">assinale se o cliente é vip: </label>
+    <input type="radio" id="rad_clienteVip"> <br>
+
+    <button onclick="analise()">analisar</button>
+
+    <div id="div_desconto"></div>
+    <div id="div_recompensa"></div>
+</body>
+<script>
+    function analise(){
+        var prod = ipt_quantidadeProd.value;
+        var valor = ipt_valorTotal.value;
+        var vip = rad_clienteVip.checked;
+       
+        
+
+        if(prod <= 5){
+            div_desconto.innerHTML = `0`
+        }else if(prod >= 6 && prod <= 10 && (valor >= 200) || (vip)){
+            div_desconto.innerHTML = `05%`
+        }else if(prod >= 10 && valor >= 500 || vip){
+            div_desconto.innerHTML = `10%`
+        }else if(prod >= 10 && valor >= 1000 && vip){
+            div_desconto.innerHTML = `15%`
+        }
+
+        var recompensa = "0";
+        var recompensa1 = "50";
+        var recompensa2 = "100";
+
+        if(prod > 10 && valor > 500){
+            div_recompensa.innerHTML = recompensa1 += recompensa2
+        }else if( prod > 5 && (valor > 200) || (vip) ){
+            div_recompensa.innerHTML = recompensa1
+        }else if(prod <= 5){
+            div_recompensa.innerHTML = recompensa
+        }
+
+    }
+</script>
+</html>
